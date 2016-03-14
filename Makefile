@@ -2,8 +2,8 @@ CC=gcc
 NAME=ldapfs
 SRC=src/main.c src/utils.c
 OBJ=$(SRC:.c=.o)
-CFLAGS=-Wall `pkg-config fuse --cflags --libs` -I ./include -I /usr/include -g3
-LDFLAGS=-lldap -L ./openldap-sources/libraries/liblber -llber
+CFLAGS=-Wall -I ./include -I /usr/include -g3 -D_FILE_OFFSET_BITS=64
+LDFLAGS=`pkg-config fuse --cflags --libs` -lldap -L ./openldap-sources/libraries/liblber -llber
 
 all: $(NAME)
 
